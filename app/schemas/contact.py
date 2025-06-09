@@ -7,21 +7,23 @@ class ContactBase(BaseModel):
     last_name: str
     email: EmailStr
     phone: str
-    birthday: date
-    additional_data: Optional[str] = None
+    birthday: date | None = None
+    additional_data: str | None = None
 
 class ContactCreate(ContactBase):
     pass
 
 class ContactUpdate(ContactBase):
-    first_name: Optional[str] = None
-    last_name: Optional[str] = None
-    email: Optional[EmailStr] = None
-    phone: Optional[str] = None
-    birthday: Optional[date] = None
+    first_name: str | None = None
+    last_name: str | None = None
+    email: EmailStr | None = None
+    phone: str | None = None
+    birthday: date | None = None
+    additional_data: str | None = None
 
-class Contact(ContactBase):
+class ContactResponse(ContactBase):
     id: int
+    user_id: int
 
     class Config:
         from_attributes = True 
